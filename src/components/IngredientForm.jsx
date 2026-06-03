@@ -1,10 +1,6 @@
-import React from 'react'
+import React from "react";
 
-const IngredientForm = ({
-  formData,
-  handleChange,
-  addIngredient,
-}) => {
+const IngredientForm = ({ formData, handleChange, addIngredient }) => {
   return (
     <form
       onSubmit={addIngredient}
@@ -16,13 +12,9 @@ const IngredientForm = ({
       mb-8
       "
     >
-
-      <h2 className="text-3xl font-bold mb-6">
-        🧴 Add Ingredient
-      </h2>
+      <h2 className="text-3xl font-bold mb-6">🧴 Add Ingredient</h2>
 
       <div className="grid md:grid-cols-2 gap-4">
-
         <input
           type="text"
           name="ingredientName"
@@ -47,30 +39,17 @@ const IngredientForm = ({
           onChange={handleChange}
           className="border p-3 rounded-xl"
         >
-          <option value="">
-            Function
-          </option>
+          <option value="">Function</option>
 
-          <option>
-            Humectant
-          </option>
+          <option>Humectant</option>
 
-          <option>
-            Emollient
-          </option>
+          <option>Emollient</option>
 
-          <option>
-            Occlusive
-          </option>
+          <option>Occlusive</option>
 
-          <option>
-            Antioxidant
-          </option>
+          <option>Antioxidant</option>
 
-          <option>
-            Exfoliant
-          </option>
-
+          <option>Exfoliant</option>
         </select>
 
         <select
@@ -79,22 +58,13 @@ const IngredientForm = ({
           onChange={handleChange}
           className="border p-3 rounded-xl"
         >
-          <option value="">
-            Safety Level
-          </option>
+          <option value="">Safety Level</option>
 
-          <option>
-            Safe
-          </option>
+          <option>Safe</option>
 
-          <option>
-            Use Carefully
-          </option>
+          <option>Use Carefully</option>
 
-          <option>
-            Irritant
-          </option>
-
+          <option>Irritant</option>
         </select>
 
         <select
@@ -103,28 +73,16 @@ const IngredientForm = ({
           onChange={handleChange}
           className="border p-3 rounded-xl"
         >
-          <option value="">
-            Skin Type
-          </option>
+          <option value="">Skin Type</option>
 
-          <option>
-            Dry Skin
-          </option>
+          <option>Dry Skin</option>
 
-          <option>
-            Oily Skin
-          </option>
+          <option>Oily Skin</option>
 
-          <option>
-            Combination Skin
-          </option>
+          <option>Combination Skin</option>
 
-          <option>
-            Sensitive Skin
-          </option>
-
+          <option>Sensitive Skin</option>
         </select>
-
       </div>
 
       <textarea
@@ -152,9 +110,8 @@ const IngredientForm = ({
         mt-6
         "
       >
-        Add Ingredient
+        {editingId ? "Update Ingredient" : "Add Ingredient"}
       </button>
-
     </form>
   );
 };
