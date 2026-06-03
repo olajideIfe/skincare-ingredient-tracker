@@ -23,6 +23,7 @@ const App = () => {
 
   const [search, setSearch] = useState("");
   const [editingId, setEditingId] = useState(null);
+  const [functionFilter, setFunctionFilter] = useState("All");
 
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -92,11 +93,6 @@ const App = () => {
     (ingredient) => ingredient.favorite,
   ).length;
 
-  const filteredIngredients = ingredients.filter(
-    (ingredient) =>
-      ingredient.ingredientName.toLowerCase().includes(search.toLowerCase()) ||
-      ingredient.inciName.toLowerCase().includes(search.toLowerCase()),
-  );
 
   const safeIngredients = ingredients.filter(
     (ingredient) => ingredient.safetyLevel === "Safe",
@@ -124,16 +120,97 @@ const App = () => {
     setEditingId(ingredient.id);
   };
 
-  const deleteIngredient = (
-  id
-) => {
-  setIngredients(
-    ingredients.filter(
-      (ingredient) =>
-        ingredient.id !== id
-    )
+  const deleteIngredient = (id) => {
+    setIngredients(ingredients.filter((ingredient) => ingredient.id !== id));
+  };
+
+  const filteredIngredients =
+  ingredients.filter(
+    (ingredient) => {
+
+      const matchesSearch =
+        ingredient
+          .ingredientName
+          .toLowerCase()
+          .includes(
+            search.toLowerCase()
+          ) ||
+
+        ingredient
+          .inciName
+          .toLowerCase()
+          .includes(
+            search.toLowerCase()
+          );
+
+      const matchesFunction =
+        functionFilter ===
+          "All" ||
+
+        ingredient
+          .functionType ===
+          functionFilter;
+
+      return (
+        matchesSearch &&
+        matchesFunction
+      );
+    }
   );
-};
+
+  <div className="flex gap-2 flex-wrap mb-8">
+
+  <button
+    onClick={() =>
+      setFunctionFilter(
+        "All"
+      )
+    }
+  >
+    All
+  </button>
+
+  <button
+    onClick={() =>
+      setFunctionFilter(
+        "Humectant"
+      )
+    }
+  >
+    Humectants
+  </button>
+
+  <button
+    onClick={() =>
+      setFunctionFilter(
+        "Emollient"
+      )
+    }
+  >
+    Emollients
+  </button>
+
+  <button
+    onClick={() =>
+      setFunctionFilter(
+        "Exfoliant"
+      )
+    }
+  >
+    Exfoliants
+  </button>
+
+  <button
+    onClick={() =>
+      setFunctionFilter(
+        "Antioxidant"
+      )
+    }
+  >
+    Antioxidants
+  </button>
+
+</div>
 
   return (
     <div>
@@ -152,6 +229,8 @@ const App = () => {
         editingId={editingId}
       />
 
+      <SearchBar search={search} setSearch={setSearch} />
+
       <div className="grid md:grid-cols-2 gap-6 mt-8">
         {filteredIngredients.map((ingredient) => (
           <IngredientCard
@@ -163,7 +242,7 @@ const App = () => {
         ))}
       </div>
 
-      <SearchBar search={search} setSearch={setSearch} />
+      
     </div>
   );
 };

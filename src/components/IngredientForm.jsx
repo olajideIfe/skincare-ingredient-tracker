@@ -1,6 +1,6 @@
 import React from "react";
 
-const IngredientForm = ({ formData, handleChange, addIngredient }) => {
+const IngredientForm = ({ formData, handleChange, addIngredient, editingId }) => {
   return (
     <form
       onSubmit={addIngredient}
