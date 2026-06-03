@@ -9,36 +9,26 @@ const Dashboard = ({
 }) => {
   return (
     <div
-      className="
-      grid
-      md:grid-cols-5
-      gap-4
-      mb-8
-      "
-    >
-
-      <div className="bg-white p-6 rounded-3xl shadow-lg">
+      className=" grid md:grid-cols-5 gap-4 mb-8 " >
+      <div
+          className="bg-white/80 backdrop-blur-md p-6 rounded-3xl shadow-lg hover:shadow-2xl hover:-translate-y-2 transition-all duration-300">
         <h3>📊 Total</h3>
 
-        <p className="text-4xl font-bold">
-          {totalIngredients}
-        </p>
+        <p className="text-4xl font-bold">{totalIngredients}</p>
       </div>
 
-      <div className="bg-white p-6 rounded-3xl shadow-lg">
+      <div
+          className="bg-white/80 backdrop-blur-md p-6 rounded-3xl shadow-lg hover:shadow-2xl hover:-translate-y-2 transition-all duration-300">
         <h3>❤️ Favorites</h3>
 
-        <p className="text-4xl font-bold">
-          {favoriteIngredients}
-        </p>
+        <p className="text-4xl font-bold">{favoriteIngredients}</p>
       </div>
 
-      <div className="bg-white p-6 rounded-3xl shadow-lg">
+      <div
+        className="bg-white/80 backdrop-blur-md p-6 rounded-3xl shadow-lg hover:shadow-2xl hover:-translate-y-2 transition-all duration-300">
         <h3>🟢 Safe</h3>
 
-        <p className="text-4xl font-bold text-green-600">
-          {safeIngredients}
-        </p>
+        <p className="text-4xl font-bold text-green-600">{safeIngredients}</p>
       </div>
 
       <div className="bg-white p-6 rounded-3xl shadow-lg">
@@ -49,14 +39,12 @@ const Dashboard = ({
         </p>
       </div>
 
-      <div className="bg-white p-6 rounded-3xl shadow-lg">
+      <div
+        className= "bg-white/80 backdrop-blur-md p-6 rounded-3xl shadow-lg hover:shadow-2xl hover:-translate-y-2 transition-all duration-300" >
         <h3>🔴 Irritant</h3>
 
-        <p className="text-4xl font-bold text-red-500">
-          {irritantIngredients}
-        </p>
+        <p className="text-4xl font-bold text-red-500">{irritantIngredients}</p>
       </div>
-
     </div>
   );
 };

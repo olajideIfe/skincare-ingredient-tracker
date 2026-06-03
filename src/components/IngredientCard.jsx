@@ -1,23 +1,15 @@
 import React from "react";
 
-const IngredientCard = ({ ingredient, toggleFavorite, editIngredient, deleteIngredient }) => {
+const IngredientCard = ({
+  ingredient,
+  toggleFavorite,
+  editIngredient,
+  deleteIngredient,
+}) => {
   return (
     <div
-      className="
-      bg-white
-      p-6
-      rounded-3xl
-      shadow-lg
-      "
-    >
-      <h2
-        className="
-        text-2xl
-        font-bold
-        text-green-700
-        mb-4
-        "
-      >
+      className=" bg-white/ backdrop-blur-md p-6 rounded-3 shadow- hover:shadow-2 hover:-translate-y transition-a duration-300" >
+      <h2 className=" text-2xl font-bold text-pink-600 mb-4 " >
         🧴 {ingredient.ingredientName}
       </h2>
 
@@ -32,14 +24,7 @@ const IngredientCard = ({ ingredient, toggleFavorite, editIngredient, deleteIngr
       <div className="mt-2">
         <strong>Safety:</strong>
 
-        <span
-          className={`
-      ml-2
-      px-3
-      py-1
-      rounded-full
-      text-white
-
+        <span className={`ml-2px-3py-1rounded-fulltext-white
       ${
         ingredient.safetyLevel === "Safe"
           ? "bg-green-500"
@@ -65,66 +50,29 @@ const IngredientCard = ({ ingredient, toggleFavorite, editIngredient, deleteIngr
 
       <button
         onClick={() => toggleFavorite(ingredient.id)}
-        className="
-  mt-4
-  px-4
-  py-2
-  rounded-xl
-  bg-pink-500
-  text-white
-  "
-      >
+        className=" mt-4 px-4 py-2 rounded-xl bg-gradient-to- from-pink-50 to-rose-500 text-white ">
         {ingredient.favorite ? "❤️ Favorited" : "🤍 Favorite"}
       </button>
 
       <div className="flex gap-2 mt-4">
+        <button
+          onClick={() => editIngredient(ingredient)}
+          className=" bg-gradient-to- from-blue-50 to-indigo-600 text-white px-4 py-2 rounded-xl ">
+          ✏️ Edit
+        </button>
 
-  <button
-    onClick={() =>
-      editIngredient(
-        ingredient
-      )
-    }
-    className="
-    bg-blue-600
-    text-white
-    px-4
-    py-2
-    rounded-xl
-    "
-  >
-    ✏️ Edit
-  </button>
+        <button
+          onClick={() => {
+            const confirmed = window.confirm("Delete this ingredient?");
 
-  <button
-    onClick={() => {
-
-      const confirmed =
-        window.confirm(
-          "Delete this ingredient?"
-        );
-
-      if (confirmed) {
-        deleteIngredient(
-          ingredient.id
-        );
-      }
-
-    }}
-    className="
-    bg-red-600
-    text-white
-    px-4
-    py-2
-    rounded-xl
-    "
-  >
-    🗑 Delete
-  </button>
-
-</div>
-
-      
+            if (confirmed) {
+              deleteIngredient(ingredient.id);
+            }
+          }}
+          className=" bg-gradient-to- from-red-50 to-rose-600 text-white  px-4 py-2 rounded-xl">
+          🗑 Delete
+        </button>
+      </div>
     </div>
   );
 };

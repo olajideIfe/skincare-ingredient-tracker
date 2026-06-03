@@ -7,7 +7,6 @@ import SearchBar from "./components/SearchBar";
 const App = () => {
   const [formData, setFormData] = useState({
     ingredientName: "",
-    inciName: "",
     functionType: "",
     safetyLevel: "",
     skinType: "",
@@ -65,7 +64,6 @@ const App = () => {
 
     setFormData({
       ingredientName: "",
-      inciName: "",
       functionType: "",
       safetyLevel: "",
       skinType: "",
@@ -93,7 +91,6 @@ const App = () => {
     (ingredient) => ingredient.favorite,
   ).length;
 
-
   const safeIngredients = ingredients.filter(
     (ingredient) => ingredient.safetyLevel === "Safe",
   ).length;
@@ -109,7 +106,6 @@ const App = () => {
   const editIngredient = (ingredient) => {
     setFormData({
       ingredientName: ingredient.ingredientName,
-      inciName: ingredient.inciName,
       functionType: ingredient.functionType,
       safetyLevel: ingredient.safetyLevel,
       skinType: ingredient.skinType,
@@ -124,96 +120,30 @@ const App = () => {
     setIngredients(ingredients.filter((ingredient) => ingredient.id !== id));
   };
 
-  const filteredIngredients =
-  ingredients.filter(
-    (ingredient) => {
+  const filteredIngredients = ingredients.filter((ingredient) => {
+    const matchesSearch =
+      ingredient.ingredientName.toLowerCase().includes(search.toLowerCase()) ||
+      ingredient.inciName.toLowerCase().includes(search.toLowerCase());
 
-      const matchesSearch =
-        ingredient
-          .ingredientName
-          .toLowerCase()
-          .includes(
-            search.toLowerCase()
-          ) ||
+    const matchesFunction =
+      functionFilter === "All" || ingredient.functionType === functionFilter;
 
-        ingredient
-          .inciName
-          .toLowerCase()
-          .includes(
-            search.toLowerCase()
-          );
-
-      const matchesFunction =
-        functionFilter ===
-          "All" ||
-
-        ingredient
-          .functionType ===
-          functionFilter;
-
-      return (
-        matchesSearch &&
-        matchesFunction
-      );
-    }
-  );
-
-  <div className="flex gap-2 flex-wrap mb-8">
-
-  <button
-    onClick={() =>
-      setFunctionFilter(
-        "All"
-      )
-    }
-  >
-    All
-  </button>
-
-  <button
-    onClick={() =>
-      setFunctionFilter(
-        "Humectant"
-      )
-    }
-  >
-    Humectants
-  </button>
-
-  <button
-    onClick={() =>
-      setFunctionFilter(
-        "Emollient"
-      )
-    }
-  >
-    Emollients
-  </button>
-
-  <button
-    onClick={() =>
-      setFunctionFilter(
-        "Exfoliant"
-      )
-    }
-  >
-    Exfoliants
-  </button>
-
-  <button
-    onClick={() =>
-      setFunctionFilter(
-        "Antioxidant"
-      )
-    }
-  >
-    Antioxidants
-  </button>
-
-</div>
+    return matchesSearch && matchesFunction;
+  });
 
   return (
-    <div>
+    <div className="min-h-screen bg-gradient-to-br from-pink-50 via-rose-100 to-purple-10 p-6 ">
+      <div className="text-center mb-10">
+        <h1 className="text-5xl font-bold bg-gradient-to-r from-pink-600 to-purple-600 bg-clip-text text-transparent mb-3">
+          🧴 Skincare Ingredient Tracker
+        </h1>
+
+        <p
+          className=" text-gray-600 text-lg" >
+          Track ingredients, safety levels, skin compatibility and formulation
+          notes.
+        </p>
+      </div>
       <Dashboard
         totalIngredients={totalIngredients}
         favoriteIngredients={favoriteIngredients}
@@ -228,21 +158,69 @@ const App = () => {
         addIngredient={addIngredient}
         editingId={editingId}
       />
+      <br />
 
       <SearchBar search={search} setSearch={setSearch} />
+      <div className="flex gap-2 flex-wrap mb-8">
+        <button
+          onClick={() => setFunctionFilter("All")}
+          className=" px-5 py-2 rounded-full bg-pink-500 text-white hover:bg-pink-600 transition shadow-md ">
+          All
+        </button>
 
-      <div className="grid md:grid-cols-2 gap-6 mt-8">
-        {filteredIngredients.map((ingredient) => (
-          <IngredientCard
-            key={ingredient.id}
-            ingredient={ingredient}
-            toggleFavorite={toggleFavorite}
-            deleteIngredient={deleteIngredient}
-          />
-        ))}
+        <button
+          onClick={() => setFunctionFilter("Humectant")}
+          className=" px-5 py-2 rounded-full bg-pink-500 text-white transition shadow-md " >
+          Humectants
+        </button>
+
+        <button
+          onClick={() => setFunctionFilter("Emollient")}
+          className=" px-5 py-2 rounded-full bg-pink-500 text-white transition shadow-md " >
+          Emollients
+        </button>
+
+        <button
+          onClick={() => setFunctionFilter("Exfoliant")}
+        className=" px-5 py-2 rounded-full bg-pink-500 text-white transition shadow-md " >
+          Exfoliants
+        </button>
+
+        <button
+          onClick={() => setFunctionFilter("Antioxidant")}
+         className=" px-5 py-2 rounded-full bg-pink-500 text-white transition shadow-md " >
+          Antioxidants
+        </button>
       </div>
 
-      
+      {filteredIngredients.length === 0 ? (
+        <div
+          className=" bg-white/80 backdrop-blur-md rounded-3xl p-10 text-center shadow-lg mt-8 " >
+          <h2
+            className="text-3xl font-bold text-pink-600 " >
+            🧴 No Ingredients Yet
+          </h2>
+
+          <p className="text-gray-600 mt-3">Add your first ingredient above.</p>
+        </div>
+      ) : (
+        <div className="grid md:grid-cols-2 gap-6 mt-8">
+          {filteredIngredients.map((ingredient) => (
+            <IngredientCard
+              key={ingredient.id}
+              ingredient={ingredient}
+              toggleFavorite={toggleFavorite}
+              editIngredient={editIngredient}
+              deleteIngredient={deleteIngredient}
+            />
+          ))}
+        </div>
+      )}
+
+      <footer
+        className=" text-center mt-16 text-gray-600 ">
+        Built with React + Tailwind CSS 💖
+      </footer>
     </div>
   );
 };

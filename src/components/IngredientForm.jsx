@@ -1,18 +1,19 @@
 import React from "react";
 
-const IngredientForm = ({ formData, handleChange, addIngredient, editingId }) => {
+const IngredientForm = ({
+  formData,
+  handleChange,
+  addIngredient,
+  editingId,
+}) => {
   return (
     <form
       onSubmit={addIngredient}
-      className="
-      bg-white
-      p-8
-      rounded-3xl
-      shadow-lg
-      mb-8
-      "
-    >
-      <h2 className="text-3xl font-bold mb-6">🧴 Add Ingredient</h2>
+      className="bg-white/80 backdrop-blur-md p-8 rounded-3xl shadow-xl-8 ">
+      <h2
+     className=" text-3xl font-bold text-pink-600 mb-6 ">
+        🧴 Add Ingredient
+      </h2>
 
       <div className="grid md:grid-cols-2 gap-4">
         <input
@@ -21,25 +22,14 @@ const IngredientForm = ({ formData, handleChange, addIngredient, editingId }) =>
           placeholder="Ingredient Name"
           value={formData.ingredientName}
           onChange={handleChange}
-          className="border p-3 rounded-xl"
-        />
-
-        <input
-          type="text"
-          name="inciName"
-          placeholder="INCI Name"
-          value={formData.inciName}
-          onChange={handleChange}
-          className="border p-3 rounded-xl"
-        />
+         className="border border-pink-200 p-3 rounded-xl focus:ring-4 focus:ring-pink-200 outline-none "/>
 
         <select
           name="functionType"
           value={formData.functionType}
           onChange={handleChange}
-          className="border p-3 rounded-xl"
-        >
-          <option value="">Function</option>
+          className="border border-pink-200 p-3 rounded-xl focus:ring-4 focus:ring-pink-200 outline-none ">
+          <option value="" >Select Function</option>
 
           <option>Humectant</option>
 
@@ -56,9 +46,8 @@ const IngredientForm = ({ formData, handleChange, addIngredient, editingId }) =>
           name="safetyLevel"
           value={formData.safetyLevel}
           onChange={handleChange}
-          className="border p-3 rounded-xl"
-        >
-          <option value="">Safety Level</option>
+         className="border border-pink-200 p-3 rounded-xl focus:ring-4 focus:ring-pink-200 outline-none ">
+          <option value=""> Select Safety Level</option>
 
           <option>Safe</option>
 
@@ -71,9 +60,8 @@ const IngredientForm = ({ formData, handleChange, addIngredient, editingId }) =>
           name="skinType"
           value={formData.skinType}
           onChange={handleChange}
-          className="border p-3 rounded-xl"
-        >
-          <option value="">Skin Type</option>
+          className="border border-pink-200 p-3 rounded-xl focus:ring-4 focus:ring-pink-200 outline-none ">
+          <option value="">Select Skin Type</option>
 
           <option>Dry Skin</option>
 
@@ -90,26 +78,11 @@ const IngredientForm = ({ formData, handleChange, addIngredient, editingId }) =>
         placeholder="Notes"
         value={formData.notes}
         onChange={handleChange}
-        className="
-        border
-        p-4
-        rounded-xl
-        w-full
-        mt-4
-        "
-      />
+        className=" border border-pink-200 p-4 rounded-xl w-full mt-4 focus:ring focus:ring-pink-2 outline-none"/>
 
       <button
         type="submit"
-        className="
-        bg-green-600
-        text-white
-        px-8
-        py-3
-        rounded-xl
-        mt-6
-        "
-      >
+        className=" bg-gradient-to-r from-pink-500 to-purple-600 text-white px-8 py-3  rounded-xl mt-6"     >
         {editingId ? "Update Ingredient" : "Add Ingredient"}
       </button>
     </form>
