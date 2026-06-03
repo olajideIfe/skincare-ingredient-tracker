@@ -1,16 +1,69 @@
-# React + Vite
+# 🧴 Skincare Ingredient Tracker
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+A React-based skincare ingredient management application that helps users organize ingredient information, monitor safety levels, categorize ingredient functions, and maintain formulation notes.
 
-Currently, two official plugins are available:
+This project was built as part of my transition from Natural Skincare Science and Plant Science into Software Development.
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
+## Features
 
-## React Compiler
+* Add new skincare ingredients
+* Edit ingredient information
+* Delete ingredients
+* Search ingredients by name or INCI name
+* Mark ingredients as favorites
+* Filter ingredients by function
+* Safety level tracking
+* Dashboard analytics
+* Local storage persistence
+* Responsive design
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+## Ingredient Information Tracked
 
-## Expanding the ESLint configuration
+* Ingredient Name
+* INCI Name
+* Function Type
+* Safety Level
+* Skin Type Compatibility
+* Formulation Notes
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+## Dashboard Analytics
+
+The dashboard provides:
+
+* Total Ingredients
+* Favorite Ingredients
+* Safe Ingredients
+* Use Carefully Ingredients
+* Irritant Ingredients
+
+## Technologies Used
+
+* React
+* JavaScript
+* Tailwind CSS
+* Vite
+* Local Storage API
+
+## Project Purpose
+
+As a Plant Scientist and Natural Skincare Scientist, I wanted to build a practical application that combines my scientific background with modern frontend development skills.
+
+This project demonstrates React fundamentals including:
+
+* Component Architecture
+* State Management
+* Props
+* CRUD Operations
+* Search Functionality
+* Filtering Logic
+* Data Persistence
+* Responsive UI Design
+
+## Future Improvements
+
+* Dark Mode
+* Ingredient Compatibility Checker
+* Formulation Builder
+* Ingredient Database Integration
+* User Authentication
+* Cloud Storage Support
