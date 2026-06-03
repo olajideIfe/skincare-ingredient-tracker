@@ -1,4 +1,6 @@
 import {useState, useEffect} from 'react'
+import IngredientForm from './components/IngredientForm';
+import IngredientCard from './components/IngredientCard';
 
 const App = () => {
 const [formData, setFormData] = useState({
@@ -63,7 +65,22 @@ const addIngredient = (e) => {
 
   return (
     <div>
+      <IngredientForm
+  formData={formData}
+  handleChange={handleChange}
+  addIngredient={addIngredient}
+/>
 
+<div className="grid md:grid-cols-2 gap-6 mt-8">
+
+  {ingredients.map((ingredient) => (
+    <IngredientCard
+      key={ingredient.id}
+      ingredient={ingredient}
+    />
+  ))}
+
+</div>
     </div>
   )
 }
